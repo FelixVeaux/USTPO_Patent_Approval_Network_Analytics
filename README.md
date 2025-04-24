@@ -1,13 +1,23 @@
-# USPTO Patent Examiner Network Analysis
+# Patent Examiner Network Analysis: Impact on Application Processing Efficiency
+![License](https://img.shields.io/badge/license-MIT-blue.svg) ![Status](https://img.shields.io/badge/status-completed-green.svg) ![McGill](https://img.shields.io/badge/McGill-ORGB672-red.svg)
+
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Research Questions](#research-questions)
+- [Data Description](#data-description)
+- [Methods](#methods)
+- [Key Findings & Business Insights](#key-findings--business-insights)
+- [Repository Structure](#repository-structure)
+- [Installation & Setup](#installation--setup)
+- [How to Reproduce](#how-to-reproduce)
+- [Citation](#citation)
 
 ## Project Overview
 
-This project analyzes how social networks among patent examiners at the USPTO influence application processing efficiency. Through network analysis and complex contagion models, we investigate how processing behaviors spread among examiners across different technology centers. The research provides insights into the social dynamics that impact patent examination speed and offers practical recommendations for reducing application backlogs.
+### Background & Motivation
+This project analyzes how social networks among patent examiners at the United States Patent and Trademark Office (USPTO) influence application processing efficiency. Patent examination backlogs can create significant delays in innovation journeys, with potential economic impacts. By understanding the social dynamics that influence processing behaviors, we can identify strategies to improve efficiency throughout the organization.
 
-Key findings indicate that examiners need exposure to at least three fast peers to adopt faster processing behaviors, and that an examiner's network position is significantly more influential than demographic factors in determining processing efficiency.
-
-## Research Questions
-
+### Research Questions
 Our analysis investigates four primary research questions:
 
 1. What organizational and social factors are associated with patent application processing times?
@@ -15,98 +25,73 @@ Our analysis investigates four primary research questions:
 3. How do processing times vary by examiner traits, technology center, and case outcome?
 4. Does exposure to multiple fast peers accelerate slower examiners' performance?
 
+### High-Level Summary of Findings
+Key findings indicate that examiners need exposure to at least three fast peers to adopt faster processing behaviors, and that an examiner's network position is significantly more influential than demographic factors in determining processing efficiency. Community-level norms and boundary-spanning individuals play a crucial role in facilitating the adoption of more efficient processing methods across the organization.
+
 ## Data Description
 
-The dataset contains detailed information about USPTO patent examiners, including:
+### Source of Examiner-Level Data
+The dataset was derived from the USPTO Patent Examination Research Dataset created by Graham et al. (2015). The processed data was provided by Prof. Galperin, containing multiple years of examiner activity and relational information.
 
+### Key Variables
 - **Examiner demographics**: Gender, race, tenure at USPTO
 - **Organizational structure**: Technology Centers/Work Groups (1600, 1700, 2100, 2400)
 - **Application outcomes**: Status (issued, abandoned, pending)
 - **Processing metrics**: Time to decision, backlog size
 - **Social network**: Advice network connections between examiners
 
-The data was cleaned and provided by Prof. Galperin, containing multiple years of examiner activity and relational information.
+### Cleaning Steps
+The data preparation involved several key steps:
+1. Converting raw feather files to parquet format for more efficient processing
+2. Standardizing date formats and calculating processing time metrics
+3. Identifying and handling missing values in demographic data
+4. Constructing network edges based on examiner interactions
+5. Creating a consistent dataset merging both examiner attributes and network connections
 
-## Methodology
+## Methods
 
-Our approach combines exploratory data analysis with advanced network analysis techniques:
+### Descriptive Statistics & EDA
+We performed extensive exploratory data analysis to understand:
+- Distribution of processing times across different technology centers
+- Demographic breakdown of examiners
+- Relationship between examiner attributes and processing efficiency
+- Basic network metrics like degree centrality and clustering
 
-1. **Exploratory Analysis**: Examining distributions of demographic factors and processing times
-2. **Network Construction**: Building advice networks from examiner interactions
-3. **Complex Contagion Modeling**: Implementing three progressive models:
-   - **Model I**: Fractional Contagion Baseline - Testing basic threshold models
-   - **Model II**: Longitudinal Exposure Causal Analysis - Analyzing repeated exposures
-   - **Model III**: Time-Weighted Complex Contagion with Network Features - Incorporating decay functions and network position
+### Network Construction & Complex Contagion Simulation Models
+We implemented three progressive contagion models with increasing complexity:
 
-Model performance was evaluated using Jaccard similarity measures comparing predicted adoption patterns with actual behavioral changes.
+- **Model I: Fractional Contagion Baseline**
+  - Simple threshold models testing different k-values (number of exposures)
+  - Basic adoption mechanism without temporal components
 
-## Project Structure
+- **Model II: Longitudinal Exposure Causal Analysis**
+  - Time-based adoption patterns
+  - Accounting for repeated exposures over different time periods
+  - Testing for causality in adoption behaviors
 
-```
-patent-examiner-network/
-├── data/
-│   ├── raw/                      # Original patent examiner data
-│   ├── processed/                # Cleaned and transformed datasets
-│   └── network/                  # Constructed examiner networks by time period
-├── notebooks/
-│   ├── 01_data_cleaning.ipynb    # Data preprocessing and cleaning
-│   ├── 02_exploratory_analysis.ipynb  # EDA of demographics and processing times
-│   ├── 03_network_construction.ipynb  # Building examiner advice networks
-│   ├── 04_basic_network_analysis.ipynb  # Network metrics and visualizations
-│   └── 05_contagion_simulations.ipynb  # Complex contagion modeling
-├── src/
-│   ├── data/
-│   │   ├── preprocessing.py      # Functions for data cleaning
-│   │   └── network_builder.py    # Functions to construct networks
-│   ├── features/
-│   │   ├── demographic_features.py  # Examiner attribute engineering
-│   │   └── network_features.py   # Network metric calculations
-│   ├── models/
-│   │   ├── fractional_threshold.py  # Model I implementation
-│   │   ├── causal_exposure.py    # Model II implementation
-│   │   └── complex_contagion.py  # Model III implementation
-│   └── visualization/
-│       ├── demographic_viz.py    # Demographics visualization functions
-│       ├── processing_time_viz.py # Processing time visualization functions
-│       └── network_viz.py        # Network visualization utilities
-├── reports/
-│   ├── figures/                  # Generated visualizations
-│   └── final_report.pdf          # Complete project report
-├── requirements.txt              # Project dependencies
-└── README.md                     # Project documentation
-```
+- **Model III: Time-Weighted Complex Contagion with Network Features**
+  - Incorporating decay functions for exposure effects
+  - Weighting influence by network position
+  - Multi-feature model combining demographic and network attributes
 
-### Directory Descriptions
+### Regression & Network-Feature Analysis
+We employed statistical models to quantify the relationships between:
+- Network centrality measures and processing efficiency
+- Demographic factors and processing times
+- Community structure and adoption rates
+- Combined effects of multiple variables on processing outcomes
 
-- **data/**: Contains all data files used in the project
-  - **raw/**: Original, unmodified USPTO examiner data
-  - **processed/**: Cleaned data ready for analysis
-  - **network/**: Network data extracted from examiner relationships
+## Key Findings & Business Insights
 
-- **notebooks/**: Jupyter notebooks for each step of the analysis pipeline
-  - Sequential notebooks from data preparation to complex modeling
+### Complex Contagion Threshold (k=3)
+Our simulations revealed a clear complex contagion dynamic among examiners. The k=3 threshold model outperformed simpler alternatives, indicating that examiners require exposure to at least 3 distinct fast peers before adopting faster processing behaviors. This finding challenges simple diffusion models and suggests targeted interventions focusing on multiple exposures.
 
-- **src/**: Modular Python code organized by functionality
-  - **data/**: Data processing utilities
-  - **features/**: Feature engineering for both demographic and network attributes
-  - **models/**: Implementation of the three contagion models
-  - **visualization/**: Visualization functions for different data types
+### Importance of Boundary Spanners & Community Norms
+Examiners who bridge between different network communities are crucial for facilitating the adoption of faster processing methods across organizational boundaries. These boundary spanners serve as conduits for best practices and can accelerate organization-wide improvements in efficiency.
 
-- **reports/**: Analysis outputs and documentation
-  - **figures/**: Generated visualizations and charts
-  - **final_report.pdf**: Comprehensive analysis report
+Community-level norms strongly drive individual behavior, with fast processing rates spreading within connected groups. Targeting interventions at the community level rather than at individuals can create more sustainable efficiency improvements.
 
-## Key Findings
-
-Our analysis revealed several significant insights:
-
-- **Complex contagion dynamics**: Examiners require exposure to at least 3 distinct fast peers before adopting faster processing behaviors (k=3 threshold model outperformed simpler alternatives)
-- **Network position dominance**: An examiner's position in the advice network (especially boundary spanning roles) is more influential than demographic factors in predicting processing efficiency
-- **Community-level effects**: Strong evidence that cluster-level norms drive individual behavior, with fast processing rates spreading within connected communities
-- **Bridge importance**: Examiners who bridge between different network communities are crucial for facilitating the adoption of faster processing methods across organizational boundaries
-
-## Business Recommendations
-
+### Strategic Intervention Recommendations
 Based on our findings, we propose four strategic initiatives:
 
 1. **Three-Mentor Program**: Connect slow examiners with multiple fast peers (minimum 3) across different work areas to leverage complex contagion dynamics
@@ -114,64 +99,91 @@ Based on our findings, we propose four strategic initiatives:
 3. **Cluster Performance Dashboard**: Implement monitoring of community-level adoption metrics to track norm changes within and across examiner clusters
 4. **Cross-Cluster Rotation Programs**: Establish structured rotations to transfer productive norms across organizational boundaries, specifically targeting high-performing clusters as sources
 
-## Installation and Usage
+## Repository Structure
+
+```
+USTPO_Patent_Approval_Network_Analytics/
+├── README.md                         ← Original project documentation
+├── README-V2.md                      ← This enhanced documentation file
+├── Data/                             ← Raw and cleaned datasets
+│   ├── Uncleaned/                    ← Original USPTO data files
+│   │   ├── app_data_starter_coded_202502.feather  ← Raw examiner data
+│   │   └── edges_sample.csv          ← Raw network connections
+│   ├── 00_edges_cleaned(Approach_1).csv   ← Processed network connections (first approach)
+│   ├── 00_starterdata_cleaned(Approach_1).csv  ← Processed examiner data (first approach)
+│   ├── 01_cleaned_edges_sample.csv   ← Further refined network connections
+│   ├── 02_ONA_final_cleaned_dataset.csv  ← Final consolidated dataset
+│   └── 03_ONA_final_cleaned_sample.csv   ← Sample of final dataset for quick testing
+├── Code/                             ← Analysis scripts and notebooks
+│   ├── 01_Data_Cleaning_(Approach_1).ipynb  ← Initial data cleaning approach
+│   ├── 02_Data_Cleaning_(Final_Approach).ipynb  ← Refined data cleaning methodology
+│   ├── 03_EDA_&_Network_Visualisation.ipynb  ← Exploratory analysis and network visualization
+│   ├── 04_Demographics_EDA.ipynb     ← Demographic analysis of examiners
+│   ├── 05_Demograhic_Network_Analysis.ipynb  ← Combined demographic and network analysis
+│   ├── 06_Complex_Contagion_Simulation.ipynb  ← Implementation of contagion models
+│   └── network_graph.graphml         ← Exported network structure for visualization
+└── USPTO Network Analytics Data Dictionary.pdf  ← Data variable definitions and descriptions
+```
+
+## Installation & Setup
 
 To set up the project environment:
 
 ```bash
 # Clone the repository
-git clone https://github.com/username/patent-examiner-network.git
-cd patent-examiner-network
+git clone https://github.com/username/USTPO_Patent_Approval_Network_Analytics.git
+cd USTPO_Patent_Approval_Network_Analytics
 
 # Create and activate virtual environment (optional)
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install dependencies
-pip install -r requirements.txt
+pip install -r requirements.txt  # Note: Create this file with necessary packages
 ```
 
-To run the analysis pipeline:
+Required packages include:
+- pandas
+- numpy
+- networkx
+- matplotlib
+- seaborn
+- pyarrow
+- jupyter
+- scikit-learn
+- statsmodels
 
-```bash
-# Run notebooks in sequence
-jupyter notebook notebooks/01_data_cleaning.ipynb
-```
+## How to Reproduce
 
-For specific analyses:
+Follow these steps to reproduce the analysis:
 
-```python
-# Example: Run complex contagion simulation
-from src.models.complex_contagion import simulate_contagion
+1. **Data Preparation**
+   ```bash
+   jupyter notebook Code/02_Data_Cleaning_(Final_Approach).ipynb
+   ```
+   Run all cells to clean and prepare the data for analysis.
 
-# Load preprocessed network
-import networkx as nx
-G = nx.read_gpickle("data/network/examiner_network_2015.gpickle")
+2. **Exploratory Data Analysis**
+   ```bash
+   jupyter notebook Code/03_EDA_&_Network_Visualisation.ipynb
+   jupyter notebook Code/04_Demographics_EDA.ipynb
+   ```
+   Run these notebooks to explore data distributions and create visualizations.
 
-# Run simulation with k=3 threshold
-results = simulate_contagion(G, threshold=3, decay_rate=0.2)
-```
+3. **Network Analysis**
+   ```bash
+   jupyter notebook Code/05_Demograhic_Network_Analysis.ipynb
+   ```
+   Analyze the relationship between demographic factors and network positions.
 
-## Technologies Used
+4. **Complex Contagion Simulations**
+   ```bash
+   jupyter notebook Code/06_Complex_Contagion_Simulation.ipynb
+   ```
+   Run the three contagion models and analyze the results.
 
-- **Python**: Primary programming language
-- **NetworkX**: Graph creation and analysis
-- **Pandas**: Data manipulation and cleaning
-- **Scikit-learn**: Machine learning components
-- **Matplotlib/Seaborn/Plotly**: Data visualization
-- **Statsmodels**: Statistical analysis
-- **Jupyter**: Interactive development and presentation
+## Citation
 
-## Contributors
+When using this dataset or analysis in academic work, please cite the original USPTO dataset:
 
-- Maggie Huang (261229497)
-- Ayda Elzohbi (260899679)
-- Felix Veaux (260973626)
-- Helia Mahmood Zadeh (261224416)
-
-## References
-
-- Graham, S., Marco, A., & Miller, R. (2015). The USPTO patent examination research dataset: A window on the process of patent examination.
-- Centola, D., & Macy, M. (2007). Complex contagions and the weakness of long ties. American Journal of Sociology, 113(3), 702-734.
-- Uzzi, B., & Spiro, J. (2005). Collaboration and creativity: The small world problem. American Journal of Sociology, 111(2), 447-504.
-- Burt, R. S. (2004). Structural holes and good ideas. American Journal of Sociology, 110(2), 349-399.
+Graham, S. J., Marco, A. C., & Miller, R. (2015). The USPTO patent examination research dataset: A window on the process of patent examination. *Journal of Economics & Management Strategy*, 24(1), 969-993. https://doi.org/10.2139/ssrn.2632731 

@@ -182,8 +182,17 @@ Follow these steps to reproduce the analysis:
    ```
    Run the three contagion models and analyze the results.
 
+
+## Contributors
+Maggie Huang 
+Ayda Elzohbi 
+Felix Veaux 
+Helia Mahmood Zadeh
+
+
 ## Citation
 
 When using this dataset or analysis in academic work, please cite the original USPTO dataset:
 
 Graham, S. J., Marco, A. C., & Miller, R. (2015). The USPTO patent examination research dataset: A window on the process of patent examination. *Journal of Economics & Management Strategy*, 24(1), 969-993. https://doi.org/10.2139/ssrn.2632731 
+

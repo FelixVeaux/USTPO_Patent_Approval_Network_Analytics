@@ -125,21 +125,7 @@ USTPO_Patent_Approval_Network_Analytics/
 └── USPTO Network Analytics Data Dictionary.pdf  ← Data variable definitions and descriptions
 ```
 
-## Installation & Setup
 
-To set up the project environment:
-
-```bash
-# Clone the repository
-git clone https://github.com/username/USTPO_Patent_Approval_Network_Analytics.git
-cd USTPO_Patent_Approval_Network_Analytics
-
-# Create and activate virtual environment (optional)
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt  # Note: Create this file with necessary packages
 ```
 
 Required packages include:

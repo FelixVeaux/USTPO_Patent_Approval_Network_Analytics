@@ -8,8 +8,6 @@
 - [Methods](#methods)
 - [Key Findings & Business Insights](#key-findings--business-insights)
 - [Repository Structure](#repository-structure)
-- [Installation & Setup](#installation--setup)
-- [How to Reproduce](#how-to-reproduce)
 - [Citation](#citation)
 
 ## Project Overview
@@ -126,8 +124,6 @@ USTPO_Patent_Approval_Network_Analytics/
 ```
 
 
-```
-
 Required packages include:
 - pandas
 - numpy
@@ -138,35 +134,6 @@ Required packages include:
 - jupyter
 - scikit-learn
 - statsmodels
-
-## How to Reproduce
-
-Follow these steps to reproduce the analysis:
-
-1. **Data Preparation**
-   ```bash
-   jupyter notebook Code/02_Data_Cleaning_(Final_Approach).ipynb
-   ```
-   Run all cells to clean and prepare the data for analysis.
-
-2. **Exploratory Data Analysis**
-   ```bash
-   jupyter notebook Code/03_EDA_&_Network_Visualisation.ipynb
-   jupyter notebook Code/04_Demographics_EDA.ipynb
-   ```
-   Run these notebooks to explore data distributions and create visualizations.
-
-3. **Network Analysis**
-   ```bash
-   jupyter notebook Code/05_Demograhic_Network_Analysis.ipynb
-   ```
-   Analyze the relationship between demographic factors and network positions.
-
-4. **Complex Contagion Simulations**
-   ```bash
-   jupyter notebook Code/06_Complex_Contagion_Simulation.ipynb
-   ```
-   Run the three contagion models and analyze the results.
 
 
 ## Contributors

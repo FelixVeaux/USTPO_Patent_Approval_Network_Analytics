@@ -184,10 +184,10 @@ Follow these steps to reproduce the analysis:
 
 
 ## Contributors
-Maggie Huang 
-Ayda Elzohbi 
-Felix Veaux 
-Helia Mahmood Zadeh
+- Maggie Huang 
+- Ayda Elzohbi 
+- Felix Veaux 
+- Helia Mahmood Zadeh
 
 
 ## Citation

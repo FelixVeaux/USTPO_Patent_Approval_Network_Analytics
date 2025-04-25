@@ -8,6 +8,7 @@
 - [Methods](#methods)
 - [Key Findings & Business Insights](#key-findings--business-insights)
 - [Repository Structure](#repository-structure)
+- [Contributors](#Contributors)
 - [Citation](#citation)
 
 ## Project Overview

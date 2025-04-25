@@ -1,5 +1,6 @@
 # Patent Examiner Network Analysis: Impact on Application Processing Efficiency
-![License](https://img.shields.io/badge/license-MIT-blue.svg) ![Status](https://img.shields.io/badge/status-completed-green.svg) ![McGill](https://img.shields.io/badge/McGill-ORGB672-red.svg)
+![McGill](https://img.shields.io/badge/McGill-ORGB672-red.svg)
+
 
 ## Table of Contents
 - [Project Overview](#project-overview)

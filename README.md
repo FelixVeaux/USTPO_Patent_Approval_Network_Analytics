@@ -8,8 +8,6 @@
 - [Methods](#methods)
 - [Key Findings & Business Insights](#key-findings--business-insights)
 - [Repository Structure](#repository-structure)
-- [Installation & Setup](#installation--setup)
-- [How to Reproduce](#how-to-reproduce)
 - [Citation](#citation)
 
 ## Project Overview
@@ -125,22 +123,6 @@ USTPO_Patent_Approval_Network_Analytics/
 └── USPTO Network Analytics Data Dictionary.pdf  ← Data variable definitions and descriptions
 ```
 
-## Installation & Setup
-
-To set up the project environment:
-
-```bash
-# Clone the repository
-git clone https://github.com/username/USTPO_Patent_Approval_Network_Analytics.git
-cd USTPO_Patent_Approval_Network_Analytics
-
-# Create and activate virtual environment (optional)
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt  # Note: Create this file with necessary packages
-```
 
 Required packages include:
 - pandas
@@ -153,37 +135,17 @@ Required packages include:
 - scikit-learn
 - statsmodels
 
-## How to Reproduce
 
-Follow these steps to reproduce the analysis:
+## Contributors
+- Maggie Huang 
+- Ayda Elzohbi 
+- Felix Veaux 
+- Helia Mahmood Zadeh
 
-1. **Data Preparation**
-   ```bash
-   jupyter notebook Code/02_Data_Cleaning_(Final_Approach).ipynb
-   ```
-   Run all cells to clean and prepare the data for analysis.
-
-2. **Exploratory Data Analysis**
-   ```bash
-   jupyter notebook Code/03_EDA_&_Network_Visualisation.ipynb
-   jupyter notebook Code/04_Demographics_EDA.ipynb
-   ```
-   Run these notebooks to explore data distributions and create visualizations.
-
-3. **Network Analysis**
-   ```bash
-   jupyter notebook Code/05_Demograhic_Network_Analysis.ipynb
-   ```
-   Analyze the relationship between demographic factors and network positions.
-
-4. **Complex Contagion Simulations**
-   ```bash
-   jupyter notebook Code/06_Complex_Contagion_Simulation.ipynb
-   ```
-   Run the three contagion models and analyze the results.
 
 ## Citation
 
 When using this dataset or analysis in academic work, please cite the original USPTO dataset:
 
 Graham, S. J., Marco, A. C., & Miller, R. (2015). The USPTO patent examination research dataset: A window on the process of patent examination. *Journal of Economics & Management Strategy*, 24(1), 969-993. https://doi.org/10.2139/ssrn.2632731 
+

@@ -104,7 +104,6 @@ Based on our findings, we propose four strategic initiatives:
 ```
 USTPO_Patent_Approval_Network_Analytics/
 ├── README.md                         ← Original project documentation
-├── README-V2.md                      ← This enhanced documentation file
 ├── Data/                             ← Raw and cleaned datasets
 │   ├── Uncleaned/                    ← Original USPTO data files
 │   │   ├── app_data_starter_coded_202502.feather  ← Raw examiner data

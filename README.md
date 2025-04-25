@@ -117,8 +117,8 @@ USTPO_Patent_Approval_Network_Analytics/
 ├── Code/                             ← Analysis scripts and notebooks
 │   ├── 01_Data_Cleaning_(Approach_1).ipynb  ← Initial data cleaning approach
 │   ├── 02_Data_Cleaning_(Final_Approach).ipynb  ← Refined data cleaning methodology
-│   ├── 03_EDA_&_Network_Visualisation.ipynb  ← Exploratory analysis and network visualization
-│   ├── 04_Demographics_EDA.ipynb     ← Demographic analysis of examiners
+│   ├── 03_NetworkCentrality_Demographics.ipynb  ← Exploratory analysis and network visualization
+│   ├── 04_Demographics_ProcessingTime.ipynb     ← Demographic analysis of examiners
 │   ├── 05_Demograhic_Network_Analysis.ipynb  ← Combined demographic and network analysis
 │   ├── 06_Complex_Contagion_Simulation.ipynb  ← Implementation of contagion models
 │   └── network_graph.graphml         ← Exported network structure for visualization
